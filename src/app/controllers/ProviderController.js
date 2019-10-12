@@ -5,17 +5,17 @@ class ProviderController {
   async index(req, res) {
     const providers = await User.findAll({
       where: { provider: true },
-      attibutes: ['id', 'name', 'avatar_id'],
+      attributes: ['id', 'name', 'avatar_id'],
       include: [
         {
           model: File,
           as: 'avatar',
-          attibutes: ['name', 'path', 'url'],
+          attributes: ['name', 'path', 'url'],
         },
       ],
     });
 
-    return res.json({ providers });
+    return res.json(providers);
   }
 }
 
